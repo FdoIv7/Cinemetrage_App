@@ -13,6 +13,9 @@
 		ED2336BA2759C2B000CC8D4E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED2336B82759C2B000CC8D4E /* Main.storyboard */; };
 		ED2336BC2759C2B200CC8D4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED2336BB2759C2B200CC8D4E /* Assets.xcassets */; };
 		ED2336BF2759C2B200CC8D4E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED2336BD2759C2B200CC8D4E /* LaunchScreen.storyboard */; };
+		ED2336CA2759C68F00CC8D4E /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2336C92759C68F00CC8D4E /* Movie.swift */; };
+		ED2336CF2759CA2800CC8D4E /* MoviePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2336CE2759CA2800CC8D4E /* MoviePresenter.swift */; };
+		ED2336D2275A904800CC8D4E /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2336D1275A904800CC8D4E /* MovieService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		ED2336BB2759C2B200CC8D4E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED2336BE2759C2B200CC8D4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED2336C02759C2B200CC8D4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED2336C92759C68F00CC8D4E /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		ED2336CE2759CA2800CC8D4E /* MoviePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePresenter.swift; sourceTree = "<group>"; };
+		ED2336D1275A904800CC8D4E /* MovieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +62,50 @@
 		ED2336B12759C2B000CC8D4E /* Cinemetrage */ = {
 			isa = PBXGroup;
 			children = (
+				ED2336D0275A8FA900CC8D4E /* API */,
+				ED2336CD2759CA1800CC8D4E /* Presenter */,
+				ED2336CC2759CA0B00CC8D4E /* View */,
+				ED2336C82759C67600CC8D4E /* Model */,
 				ED2336B22759C2B000CC8D4E /* AppDelegate.swift */,
 				ED2336B42759C2B000CC8D4E /* SceneDelegate.swift */,
-				ED2336B62759C2B000CC8D4E /* ViewController.swift */,
-				ED2336B82759C2B000CC8D4E /* Main.storyboard */,
 				ED2336BB2759C2B200CC8D4E /* Assets.xcassets */,
 				ED2336BD2759C2B200CC8D4E /* LaunchScreen.storyboard */,
 				ED2336C02759C2B200CC8D4E /* Info.plist */,
 			);
 			path = Cinemetrage;
+			sourceTree = "<group>";
+		};
+		ED2336C82759C67600CC8D4E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ED2336C92759C68F00CC8D4E /* Movie.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		ED2336CC2759CA0B00CC8D4E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ED2336B62759C2B000CC8D4E /* ViewController.swift */,
+				ED2336B82759C2B000CC8D4E /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ED2336CD2759CA1800CC8D4E /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				ED2336CE2759CA2800CC8D4E /* MoviePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		ED2336D0275A8FA900CC8D4E /* API */ = {
+			isa = PBXGroup;
+			children = (
+				ED2336D1275A904800CC8D4E /* MovieService.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +178,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED2336D2275A904800CC8D4E /* MovieService.swift in Sources */,
 				ED2336B72759C2B000CC8D4E /* ViewController.swift in Sources */,
 				ED2336B32759C2B000CC8D4E /* AppDelegate.swift in Sources */,
+				ED2336CA2759C68F00CC8D4E /* Movie.swift in Sources */,
+				ED2336CF2759CA2800CC8D4E /* MoviePresenter.swift in Sources */,
 				ED2336B52759C2B000CC8D4E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
