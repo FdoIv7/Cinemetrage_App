@@ -7,6 +7,7 @@
 
 import Foundation
 
+//Class for MovieService setup
 protocol MovieService {
     //Methods for our movie service
     func fetchMovies(from endPoint: MovieDBEndPoint, completion: @escaping(Result<MovieResponse, MovieError>) -> Void)

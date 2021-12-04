@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED1F6FF1275AE6D400EEB648 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1F6FF0275AE6D400EEB648 /* Utilities.swift */; };
 		ED2336B32759C2B000CC8D4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2336B22759C2B000CC8D4E /* AppDelegate.swift */; };
 		ED2336B52759C2B000CC8D4E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2336B42759C2B000CC8D4E /* SceneDelegate.swift */; };
 		ED2336B72759C2B000CC8D4E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2336B62759C2B000CC8D4E /* ViewController.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ED1F6FF0275AE6D400EEB648 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		ED2336AF2759C2B000CC8D4E /* Cinemetrage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cinemetrage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED2336B22759C2B000CC8D4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED2336B42759C2B000CC8D4E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				ED2336BB2759C2B200CC8D4E /* Assets.xcassets */,
 				ED2336BD2759C2B200CC8D4E /* LaunchScreen.storyboard */,
 				ED2336C02759C2B200CC8D4E /* Info.plist */,
+				ED1F6FF0275AE6D400EEB648 /* Utilities.swift */,
 			);
 			path = Cinemetrage;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 			files = (
 				ED2336D2275A904800CC8D4E /* MovieService.swift in Sources */,
 				ED2336B72759C2B000CC8D4E /* ViewController.swift in Sources */,
+				ED1F6FF1275AE6D400EEB648 /* Utilities.swift in Sources */,
 				ED2336B32759C2B000CC8D4E /* AppDelegate.swift in Sources */,
 				ED2336CA2759C68F00CC8D4E /* Movie.swift in Sources */,
 				ED2336CF2759CA2800CC8D4E /* MoviePresenter.swift in Sources */,
