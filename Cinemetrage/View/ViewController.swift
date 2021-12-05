@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        print(Bundle.main.readAndDecodeJSON(file: "genre_list") as Any)
         
     }
 

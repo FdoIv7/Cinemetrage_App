@@ -21,8 +21,7 @@ struct Movie : Decodable {
     let voteAverage : Double
     let voteCount : Int
     let runtime : Int? 
-    
-    
-    
-    
+
 }
+
+

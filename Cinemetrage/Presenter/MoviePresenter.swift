@@ -25,22 +25,59 @@ class MoviePresenter : MovieService {
     
     
     func fetchMovies(from endPoint: MovieDBEndPoint, completion: @escaping (Result<MovieResponse, MovieError>) -> Void) {
-        <#code#>
+        //Declare our url
+        guard let url = URL(string: "\(baseAPIUrl)/movie/\(endPoint.rawValue)") else {
+            //If the url is nil, execute completion handler
+            completion(.failure(.invalidEndPoint))
+            return
+        }
+        
+        //URL Not nil, we can safely loadAndDecode our URL
+        loadAndDecodeURL(with: url, completion: completion)
+        
     }
     
     func fetchSingleMovie(id: Int, completion: @escaping (Result<Movie, MovieError>) -> Void) {
-        <#code#>
+        guard let url = URL(string: "\(baseAPIUrl)/movie/\(id)") else {
+            completion(.failure(.invalidEndPoint))
+            return
+        }
+        
+        //Append extra params
+        loadAndDecodeURL(with: url, params: [
+            "append_to_response" : "video, credits"
+        ], completion: completion)
     }
     
     func fetchGenres(genreID: Int, completion: @escaping (Result<MovieResponse, MovieError>) -> Void) {
-        <#code#>
+        //Declare our url
+        guard let url = URL(string: "\(baseAPIUrl)/genre/movie/list") else {
+            //If the url is nil, execute completion handler
+            completion(.failure(.invalidEndPoint))
+            return
+        }
+        loadAndDecodeURL(with: url, completion: completion)
     }
     
     func searchMovie(query: String, completion: @escaping (Result<MovieResponse, MovieError>) -> Void) {
-        <#code#>
+        //Declare our url
+        guard let url = URL(string: "\(baseAPIUrl)/search/movie/") else {
+            //If the url is nil, execute completion handler
+            completion(.failure(.invalidEndPoint))
+            return
+        }
+        
+        //Append the query to params
+        loadAndDecodeURL(with: url, params: [
+            "language" : "en-US",
+            "include_adult" : "false",
+            "region" : "US",
+            "query" : query,
+        ], completion: completion)
     }
     
-    private func loadAndDecodeURL(with url: URL, params: [String : String]? = nil, completion: @escaping (Result<Decodable, MovieError>) -> Void){
+    //We set optional params in case we need to pass extra parameters
+    private func loadAndDecodeURL<D: Decodable>(with url: URL, params: [String : String]? = nil, completion: @escaping (Result<D, MovieError>) -> Void){
         
         //URLComponents init returns an optional URLComponents object
         guard var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
@@ -66,10 +103,56 @@ class MoviePresenter : MovieService {
         }
         
         //Use URLSessionDataTask to make our request
-        urlSession.dataTask(with: finalURL) { data, response, error in
+        urlSession.dataTask(with: finalURL) { [weak self] data, response, error in
+            
+            guard let self = self else { return }
+        
             if error != nil {
-                completion(.failure(.apiError))
+                //Since the completion handler is being called in the background, make sure to call it in the main thread
+                self.executeCompletionMainThread(with: .failure(.apiError), completion: completion)
+                return
             }
+            
+            //Convert the urlResponse to a HTTPURLResponse type
+            guard let httpUrlResponse = response as? HTTPURLResponse else {
+                //error - invalid response
+                self.executeCompletionMainThread(with: .failure(.invalidResponse), completion: completion)
+                return
+            }
+            
+            if httpUrlResponse.statusCode >= 200 && httpUrlResponse.statusCode < 300 {
+                //We got a valid response
+                print("We got a valid HTTPUrlResponse - Success!")
+            } else {
+                self.executeCompletionMainThread(with: .failure(.invalidResponse), completion: completion)
+                return
+            }
+            
+            guard let safeData = data else {
+                //Our data was nil
+                self.executeCompletionMainThread(with: .failure(.noData), completion: completion)
+                return
+            }
+            
+            //Decode our data with JSONDecoder
+            do {
+                //Pass the success decodedData as the value
+                let decodedData = try self.jsonDecoder.decode(D.self, from: safeData)
+                self.executeCompletionMainThread(with: .success(decodedData), completion: completion)
+            } catch {
+                self.executeCompletionMainThread(with: .failure(.serializationError), completion: completion)
+            }
+        }
+        
+        //Resume our data task
+        urlSession.dataTask(with: finalURL).resume()
+    }
+    
+    //Helper method to run our completion in the main thread
+    private func executeCompletionMainThread<D: Decodable>(with result: Result<D, MovieError>, completion: @escaping (Result<D, MovieError>) -> Void){
+        
+        DispatchQueue.main.async {
+            completion(result)
         }
         
     }
