@@ -18,7 +18,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var popularCollectionView: UICollectionView!
     @IBOutlet weak var topRatedCollectionView: UICollectionView!
     
-    private let movieService = MoviesAPIService()
+    //private let movieService = MoviesAPIService()
     private var viewModel = MovieViewModel()
     
     override func viewDidLoad() {

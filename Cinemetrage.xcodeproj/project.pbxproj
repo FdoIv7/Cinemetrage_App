@@ -130,6 +130,7 @@
 		ED2336C82759C67600CC8D4E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				ED2336D1275A904800CC8D4E /* MoviesProtocol.swift */,
 				ED2336C92759C68F00CC8D4E /* Movie.swift */,
 				ED1F6FFB275C738600EEB648 /* Movie+Stub.swift */,
 			);
@@ -159,7 +160,6 @@
 		ED2336D0275A8FA900CC8D4E /* API */ = {
 			isa = PBXGroup;
 			children = (
-				ED2336D1275A904800CC8D4E /* MoviesProtocol.swift */,
 				ED2336CE2759CA2800CC8D4E /* MoviesAPIService.swift */,
 			);
 			path = API;
