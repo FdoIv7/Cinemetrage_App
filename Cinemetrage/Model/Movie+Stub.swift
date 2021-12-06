@@ -25,10 +25,11 @@ extension Bundle {
     func readAndDecodeJSON(file fileName: String) -> Decodable{
         do {
             //Safely get our bundlePath and safely try to get Data from our bundlePath
+            print("We are runing \(#function) + \(fileName)")
             if let bundlePath = Bundle.main.path(forResource: fileName, ofType: "json"),  let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
-                
-                //We got some JSON Data back
+
                 let decodedData = parseData(jsonData: jsonData)
+                
                 return decodedData
             }
         } catch {
@@ -45,6 +46,7 @@ extension Bundle {
         //Try to decode our jsonData
         do {
             let decodedData = try decoder.decode(Data.self, from: jsonData)
+            print("decoded Data \(decodedData)")
             return decodedData
         } catch {
             print("error decoding data")
